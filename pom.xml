@@ -1,15 +1,15 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	
-	<groupId>net.gescobar</groupId>
+	<groupId>io.github.mudphilo</groupId>
 	<artifactId>jmx-annotations</artifactId>
 	<version>1.0.1-SNAPSHOT</version>
 	
 	<name>JMX Annotations</name>
 	
 	<scm>
-		<url>scm:git:git@github.com:germanescobar/jmx-annotations.git</url>
-		<connection>scm:git:git@github.com:germanescobar/jmx-annotations.git</connection>
+		<url>scm:git:git@github.com:mudphilo/jmx-annotations.git</url>
+		<connection>scm:git:git@github.com:mudphilo/jmx-annotations.git</connection>
 	</scm>
 	
 	<dependencies>
@@ -23,7 +23,9 @@
 	</dependencies>
 	
 	<build>
+
 		<plugins>
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -39,7 +41,7 @@
 					<fork>true</fork>
 				</configuration>
 			</plugin>
-			
+
 			<!-- generate sources -->
 			<plugin>
 				<artifactId>maven-source-plugin</artifactId>
@@ -54,7 +56,7 @@
 					</execution>
 				</executions>
 			</plugin>
-			
+
 			<!-- generate javadoc -->
 			<plugin>
 				<artifactId>maven-javadoc-plugin</artifactId>
@@ -70,20 +72,71 @@
 					</execution>
 				</executions>
 			</plugin>
-			
+
+			<plugin>
+				<groupId>org.sonatype.plugins</groupId>
+				<artifactId>nexus-staging-maven-plugin</artifactId>
+				<version>1.6.7</version>
+				<extensions>true</extensions>
+				<configuration>
+					<serverId>ossrh</serverId>
+					<nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
+					<autoReleaseAfterClose>true</autoReleaseAfterClose>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-gpg-plugin</artifactId>
+				<version>1.5</version>
+				<executions>
+					<execution>
+						<id>sign-artifacts</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>sign</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+
 		</plugins>
 	</build>
-	
-	<distributionManagement>  
- 		<repository>  
-  			<id>elibom</id>  
-  			<url>http://repository.elibom.net/nexus/content/repositories/releases</url>  
- 		</repository>  
- 		  
- 		<snapshotRepository>  
-  			<id>elibom</id>   
-  			<url>http://repository.elibom.net/nexus/content/repositories/snapshots</url>  
- 		</snapshotRepository>  
+
+	<licenses>
+		<license>
+			<name>MIT License</name>
+			<url>http://www.opensource.org/licenses/mit-license.php</url>
+		</license>
+	</licenses>
+	<developers>
+		<developer>
+			<name>Philip Mudenyo</name>
+			<email>philipmdenyo@gmail.com</email>
+			<organization>SMES Tech Innovations</organization>
+			<organizationUrl>https://smestech.com</organizationUrl>
+		</developer>
+	</developers>
+
+
+	<distributionManagement>
+
+		<snapshotRepository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+		</snapshotRepository>
+
+		<repository>
+			<id>ossrh</id>
+			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+		</repository>
+
 	</distributionManagement>
-	
+
+
+
+
+
+
 </project>
