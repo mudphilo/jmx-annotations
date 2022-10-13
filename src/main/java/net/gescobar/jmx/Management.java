@@ -31,8 +31,7 @@ public final class Management {
 	 * 
 	 * <p>All the public attributes and methods annotated with {@link ManagedAttribute} and {@link ManagedOperation} 
 	 * of the object's class (and the classes it descends from) will be exposed. The object must be annotated with 
-	 * {@link ManagedBean}.</p>
-	 * 
+	 *
 	 * @param object the object that will be exposed as an MBean.
 	 * @param name the name used to expose the object in the MBeanServer (see 
 	 * 		  <a href="http://docs.oracle.com/javase/6/docs/api/javax/management/ObjectName.html">
@@ -97,7 +96,10 @@ public final class Management {
     	}
     	
     }
-    
+
+    /*
+    check if is isRegistered
+     */
     public boolean isRegistered(String name) throws ManagementException {
     	
     	if (name == null || "".equals(name)) {

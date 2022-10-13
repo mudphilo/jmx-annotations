@@ -1,5 +1,8 @@
 package net.gescobar.jmx.util;
 
+/*
+String helper methods
+ */
 public class StringUtils {
 	
 	/**
